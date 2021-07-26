@@ -11,7 +11,11 @@ class App extends Component{
     }
   }
   handleGamePlay = (index) => {
-    alert(index)
+    // now board is a variable holding the value of the array in the state object
+    const {board} = this.state
+    board[index] = '🌴'
+    // here were are setting the state for the board[index] value to the tree emoji
+    this.setState({board: board})
   }
 //  now we need Square to tell App....
   render(){
