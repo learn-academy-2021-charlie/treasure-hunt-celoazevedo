@@ -10,17 +10,23 @@ class App extends Component{
       board: ["?", "?", "?", "?", "?", "?", "?", "?", "?"],
       treasureLocation: null,
       bombLocation: null,
-      counter: 5
+      counter: 5,
+      message: ''
     }
   }
   handleGamePlay = (index) => {
     const {board} = this.state
     const {counter} = this.state
+    // const {message} = this.state
     if(index === this.state.treasureLocation && counter !== 0){
        // now board is a variable holding the value of the array in the state object
       board[index] = '💎'
+      // winning message
       // here were are setting the state for the board[index] value to the tree emoji
-      this.setState({board: board})
+      this.setState({
+        board: board,
+        message: 'You Won!'
+      })
     } else if(index === this.state.bombLocation && counter !== 0) {
       // now board is a variable holding the value of the array in the state object
       board[index] = '💣'
@@ -57,7 +63,8 @@ class App extends Component{
     return(
       <>
         <h1>Treasure Hunt Game</h1>
-        <h5>{this.state.counter}</h5>
+        <h5>{`${this.state.counter} attempts left`}</h5>
+        <h5>{this.state.message}</h5>
         <div id="gameboard">
           {/* we will map the board array that is in the state object */}
           {this.state.board.map((value, index) => {
