@@ -10,25 +10,35 @@ class App extends Component{
       board: ["?", "?", "?", "?", "?", "?", "?", "?", "?"],
       treasureLocation: null,
       bombLocation: null,
-      counter: 0
+      counter: 5
     }
   }
   handleGamePlay = (index) => {
     const {board} = this.state
     const {counter} = this.state
-    if(index === this.state.treasureLocation){
+    if(index === this.state.treasureLocation && counter !== 0){
        // now board is a variable holding the value of the array in the state object
       board[index] = '💎'
       // here were are setting the state for the board[index] value to the tree emoji
       this.setState({board: board})
-    } else if(index === this.state.bombLocation) {
+    } else if(index === this.state.bombLocation && counter !== 0) {
       // now board is a variable holding the value of the array in the state object
       board[index] = '💣'
       // here were are setting the state for the board[index] value to the tree emoji
       this.setState({board: board})
-    } else {
+    } else if (counter > 0) {
       board[index] = '🌴'
-      this.setState({board: board})
+      this.setState({
+        board: board,
+        counter: counter-1
+      })
+      console.log(counter)
+    } else {
+      board[index] = '🙉'
+      this.setState({
+        board: board,
+      })
+      alert('No more trys for you!')
     }
    
   }
@@ -47,6 +57,7 @@ class App extends Component{
     return(
       <>
         <h1>Treasure Hunt Game</h1>
+        <h5>{this.state.counter}</h5>
         <div id="gameboard">
           {/* we will map the board array that is in the state object */}
           {this.state.board.map((value, index) => {
