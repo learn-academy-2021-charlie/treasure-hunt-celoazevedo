@@ -2,6 +2,12 @@ h1 {
     text-align: center;
 }
 
+h5 {
+    text-align: center;
+    font-size: 5rem;
+    margin: 0 auto;
+}
+
 #square {
     /* margin: auto; */
     height: 200px;
