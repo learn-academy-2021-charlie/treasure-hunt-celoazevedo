@@ -8,14 +8,22 @@ class App extends Component{
     this.state = {
       // the board arrays is what will dictate the number of squares!!!
       board: ["?", "?", "?", "?", "?", "?", "?", "?", "?"],
-      treasureLocation: null
+      treasureLocation: null,
+      bombLocation: null,
+      counter: 0
     }
   }
   handleGamePlay = (index) => {
     const {board} = this.state
+    const {counter} = this.state
     if(index === this.state.treasureLocation){
        // now board is a variable holding the value of the array in the state object
       board[index] = '💎'
+      // here were are setting the state for the board[index] value to the tree emoji
+      this.setState({board: board})
+    } else if(index === this.state.bombLocation) {
+      // now board is a variable holding the value of the array in the state object
+      board[index] = '💣'
       // here were are setting the state for the board[index] value to the tree emoji
       this.setState({board: board})
     } else {
@@ -28,7 +36,11 @@ class App extends Component{
   // a react life cycle method --- this will run automagically
   componentDidMount() {
     let treasure = Math.floor(Math.random() * this.state.board.length)
-    this.setState({treasureLocation: treasure})
+    let bomb = Math.floor(Math.random() * this.state.board.length)
+    this.setState({
+      treasureLocation: treasure,
+      bombLocation: bomb
+    })
   }
 //  now we need Square to tell App....
   render(){
