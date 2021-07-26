@@ -37,20 +37,28 @@ class App extends Component{
         message: 'You Lost!',
         counter: 0
       })
-    } else if (counter > 0) {
+    } else if (counter !== 0) {
       board[index] = '🌴'
       this.setState({
         board: board,
         counter: counter-1
       })
       console.log(counter)
-    } else {
-      board[index] = '🙉'
+    } else if (counter === 0) {
       this.setState({
         board: board,
+        message: 'No more trys for you!'
       })
       alert('No more trys for you!')
-    }
+    } 
+    // else {
+    //   board[index] = '🙉'
+    //   this.setState({
+    //     board: board,
+    //     // message: 'No more trys for you!'
+    //   })
+    //   alert('No more trys for you!')
+    // }
    
   }
   // we can put anything inside hre that we want it to run right of the bat!!!
