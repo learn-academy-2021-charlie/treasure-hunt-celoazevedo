@@ -14,6 +14,7 @@ class App extends Component{
       message: ''
     }
   }
+
   handleGamePlay = (index) => {
     const {board} = this.state
     const {counter} = this.state
@@ -71,6 +72,22 @@ class App extends Component{
       bombLocation: bomb
     })
   }
+
+  // Here we are reseting the state to the initial value!!! -- But the conditional 
+  //.. that defines what emoji goes in the square is not working properly after implementing this.
+  //.. we only get trees upon clicking :0
+  /// !!!! --- we need to declare this function AFTER declaring the didMount!
+  //// Nope! what we need to do is to call the componentDidMount method whenever we invoke the playAgain function!
+  playAgain = () => {
+    this.setState({
+      board: ["?", "?", "?", "?", "?", "?", "?", "?", "?"],
+      treasureLocation: null,
+      bombLocation: null,
+      counter: 5,
+      message: ''
+    })
+    this.componentDidMount()
+}
 //  now we need Square to tell App....
   render(){
     return(
@@ -84,6 +101,7 @@ class App extends Component{
             return <Square value={value} key={index} index={index} handleGamePlay={this.handleGamePlay}/>
           })}
         </div>
+        <button onClick={this.playAgain}>Restart</button>
       </>
     )
   }
