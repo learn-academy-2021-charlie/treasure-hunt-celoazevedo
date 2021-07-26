@@ -10,7 +10,10 @@ class App extends Component{
       board: ["?", "?", "?", "?", "?", "?", "?", "?", "?"]
     }
   }
-
+  handleGamePlay = (index) => {
+    alert(index)
+  }
+//  now we need Square to tell App....
   render(){
     return(
       <>
@@ -18,7 +21,7 @@ class App extends Component{
         <div id="gameboard">
           {/* we will map the board array that is in the state object */}
           {this.state.board.map((value, index) => {
-            return <Square value={value} key={index}/>
+            return <Square value={value} key={index} index={index} handleGamePlay={this.handleGamePlay}/>
           })}
         </div>
       </>
