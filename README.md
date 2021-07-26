@@ -22,6 +22,7 @@
 - As a user, I can see a message informing me that I won the game if I select the square that contains the treasure.
     - branch name -- winning-message
 - As a user, I can see a message informing me that I lost the game if I select the square that contains the bomb.
+    - branch name -- loosing-message
 - As a user, I cannot continue to play the game after I win or lose.
 - As a user, I can see a message informing me that I lost the game when I run out of turns (the counter reaches zero).
 - As a user, I can click on a “Play Again” button that will restart the game.
