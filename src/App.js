@@ -101,7 +101,9 @@ class App extends Component{
             return <Square value={value} key={index} index={index} handleGamePlay={this.handleGamePlay}/>
           })}
         </div>
-        <button onClick={this.playAgain}>Restart</button>
+        <div id="buttonContainer">
+          <button onClick={this.playAgain}>Restart</button>
+        </div>
       </>
     )
   }

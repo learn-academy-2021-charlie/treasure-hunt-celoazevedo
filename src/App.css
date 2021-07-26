@@ -23,3 +23,14 @@ h5 {
     width: 620px;
     flex-wrap: wrap;
 }
+
+button{
+    font-size: large;
+    color: honeydew;
+    background-color: rgb(58, 138, 58);
+}
+
+#buttonContainer {
+    margin: 0 auto;
+    text-align: center;
+}
